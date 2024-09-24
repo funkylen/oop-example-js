@@ -1,4 +1,5 @@
 export default class Hero {
+    // NOTE: Хештег (#) делает свойства приватными, то есть недоступными извне
     #level
     #class
     #name
