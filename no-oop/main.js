@@ -1,25 +1,17 @@
-import Warrior from "../oop/Game/warrior"
-import Mage from "../oop/Game/mage"
-import Rogue from "../oop/Game/rogue"
-import LootGenerator from "../oop/Game/LootGenerator"
-import Hero from "../oop/Game/hero"
+import { createWarrior, useStrongAttack } from "./Game/warrior";
+import { createMage, useFireball } from "./Game/mage";
+import { createRogue, useFastArrow } from "./Game/rogue";
+import { attack } from "./Game/hero";
+import { generateLoot } from "./Game/LootGenerator";
 
-const newWarrior = new Warrior('John')
-const newMage = new Mage('Josh')
-const newRogue = new Rogue('Bob')
 
-console.log(newWarrior)
-console.log(newMage)
-console.log(newRogue)
-newWarrior.attack(newMage)
-newMage.useFireball(newWarrior)
+const newWarrior = createWarrior('john')
+const newMage = createMage('bob')
+const newRogue = createRogue('josh')
 
-newWarrior.print()
-newMage.print()
+console.log({ newWarrior, newMage })
+attack(newMage, newWarrior)
+useFireball(newMage, newWarrior)
+console.log({ newWarrior, newMage })
 
-const lootGenerator = new LootGenerator()
-const mageLoot = lootGenerator.generate(newMage)
-console.log(mageLoot)
-
-// NOTE: не должно работать
-// new Hero('name', 123, 123, 123, 123)
+console.log(generateLoot(newMage))

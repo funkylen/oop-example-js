@@ -1,17 +1,25 @@
-import { createWarrior, useStrongAttack } from "../no-oop/Game/warrior";
-import { createMage, useFireball } from "../no-oop/Game/mage";
-import { createRogue, useFastArrow } from "../no-oop/Game/rogue";
-import { attack } from "../no-oop/Game/hero";
-import { generateLoot } from "../no-oop/Game/LootGenerator";
+import Warrior from "./Game/warrior"
+import Mage from "./Game/mage"
+import Rogue from "./Game/rogue"
+import LootGenerator from "./Game/LootGenerator"
+import Hero from "./Game/hero"
 
+const newWarrior = new Warrior('John')
+const newMage = new Mage('Josh')
+const newRogue = new Rogue('Bob')
 
-const newWarrior = createWarrior('john')
-const newMage = createMage('bob')
-const newRogue = createRogue('josh')
+console.log(newWarrior)
+console.log(newMage)
+console.log(newRogue)
+newWarrior.attack(newMage)
+newMage.useFireball(newWarrior)
 
-console.log({ newWarrior, newMage })
-attack(newMage, newWarrior)
-useFireball(newMage, newWarrior)
-console.log({ newWarrior, newMage })
+newWarrior.print()
+newMage.print()
 
-console.log(generateLoot(newMage))
+const lootGenerator = new LootGenerator()
+const mageLoot = lootGenerator.generate(newMage)
+console.log(mageLoot)
+
+// NOTE: не должно работать
+// new Hero('name', 123, 123, 123, 123)
